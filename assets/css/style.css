@@ -607,6 +607,13 @@ main {
   overflow: hidden;
 }
 
+.timeline-list span {
+  color: var(--vegas-gold);
+  font-weight: var(--fw-400);
+  line-height: 1.6;
+}	
+	
+
 
 /**
  * #testimonials-modal
