@@ -34,20 +34,26 @@ const testimonialsModalFunc = function () {
 }
 
 // add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
+for (let i = 0; i < navigationLinks.length; i++) {
+  navigationLinks[i].addEventListener("click", function () {
 
-  testimonialsItem[i].addEventListener("click", function () {
+    for (let j = 0; j < pages.length; j++) {
+      if (this.innerHTML.toLowerCase() === pages[j].dataset.page) {
+        pages[j].classList.add("active");
+      } else {
+        pages[j].classList.remove("active");
+      }
+    }
 
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+    // Remove active from all nav links
+    navigationLinks.forEach(link => link.classList.remove("active"));
+    // Add active to the clicked nav link
+    this.classList.add("active");
 
-    testimonialsModalFunc();
-
+    window.scrollTo(0, 0);
   });
-
 }
+
 
 // add click event to modal close button
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
